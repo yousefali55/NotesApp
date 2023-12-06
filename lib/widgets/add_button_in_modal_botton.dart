@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddButtonInModalBottom extends StatelessWidget {
-  const AddButtonInModalBottom({super.key});
-
+  AddButtonInModalBottom({super.key, required this.onPressed});
+  final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ButtonStyle(
         shape: MaterialStateProperty.all<OutlinedBorder>(
           RoundedRectangleBorder(

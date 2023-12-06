@@ -13,11 +13,11 @@ class ModalBottomSheet extends StatefulWidget {
 class _ModalBottomSheetState extends State<ModalBottomSheet> {
   final GlobalKey<FormState> FormKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? title,subTitle;
+  String? title, subTitle;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       height: 450.h,
       child: Form(
         key: FormKey,
@@ -25,18 +25,37 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
         child: Column(
           children: [
             SizedBox(
-              height: 20.h,
+              height: 15.h,
             ),
             CustonTextField(
+              type: 'title',
               hintText: 'Add Title',
               maxLines: 1,
+              onSaved: (value) {
+                value = title;
+              },
             ),
             SizedBox(
-              height: 30.h,
+              height: 10.h,
             ),
-            CustonTextField(maxLines: 5, hintText: 'Add Note'),
+            CustonTextField(
+                onSaved: (value) {
+                  value = subTitle;
+                },
+                type: 'Note',
+                maxLines: 5,
+                hintText: 'Add Note'),
             const Spacer(),
-            AddButtonInModalBottom(),
+            AddButtonInModalBottom(
+              onPressed: () {
+                if (FormKey.currentState!.validate()) {
+                  FormKey.currentState!.save();
+                } else {
+                  autovalidateMode = AutovalidateMode.always;
+                  setState(() {});
+                }
+              },
+            ),
           ],
         ),
       ),
