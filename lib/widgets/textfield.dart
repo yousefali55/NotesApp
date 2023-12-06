@@ -7,8 +7,7 @@ class CustonTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      
+    return TextFormField(
       maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hintText,

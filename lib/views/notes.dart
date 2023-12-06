@@ -31,3 +31,4 @@ class NotesScreen extends StatelessWidget {
     );
   }
 }
+//flutter packages pub run build_runner build
