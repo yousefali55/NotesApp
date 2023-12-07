@@ -50,7 +50,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                       hintText: 'Add Title',
                       maxLines: 1,
                       onSaved: (value) {
-                        value = title;
+                        title = value;
                       },
                     ),
                     SizedBox(
@@ -58,7 +58,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                     ),
                     CustonTextField(
                         onSaved: (value) {
-                          value = subtitle;
+                          subtitle = value;
                         },
                         type: 'Note',
                         maxLines: 5,
@@ -68,8 +68,13 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                       onPressed: () {
                         if (FormKey.currentState!.validate()) {
                           FormKey.currentState!.save();
-                          var noteModel = NotelModel(title: title!, subtitle: subtitle!, date: DateTime.now().toString(), color: Colors.grey.value);
-                          BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                          var noteModel = NotelModel(
+                              title: title!,
+                              subtitle: subtitle!,
+                              date: DateTime.now().toString(),
+                              color: Colors.grey.value);
+                          BlocProvider.of<AddNoteCubit>(context)
+                              .addNote(noteModel);
                         } else {
                           autovalidateMode = AutovalidateMode.always;
                           setState(() {});
