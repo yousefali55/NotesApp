@@ -11,7 +11,7 @@ class NotelModel extends HiveObject{
   @HiveField(2)
   final String date;
   @HiveField(3)
-  final String color;
+  final int color;
 
   NotelModel({required this.title, required this.subtitle, required this.date, required this.color});
 }

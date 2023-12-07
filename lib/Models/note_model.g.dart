@@ -20,7 +20,7 @@ class NotelModelAdapter extends TypeAdapter<NotelModel> {
       title: fields[0] as String,
       subtitle: fields[1] as String,
       date: fields[2] as String,
-      color: fields[3] as String,
+      color: fields[3] as int,
     );
   }
 
