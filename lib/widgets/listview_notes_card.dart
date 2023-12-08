@@ -9,6 +9,7 @@ class ListViewNoteCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final NotelModel note;
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
         List<NotelModel> notes = BlocProvider.of<NotesCubit>(context).notes!;
@@ -16,7 +17,9 @@ class ListViewNoteCards extends StatelessWidget {
           child: ListView.builder(
             itemCount: notes.length,
             itemBuilder: (context, index) {
-              return NoteCard();
+              return NoteCard(
+                note: notes[index],
+              );
             },
           ),
         );
