@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:notes/cubits/add_note/add_note_cubit.dart';
 
 class AddButtonInModalBottom extends StatelessWidget {
   AddButtonInModalBottom({super.key, required this.onPressed});
@@ -26,8 +28,15 @@ class AddButtonInModalBottom extends StatelessWidget {
           Colors.blueGrey,
         ),
       ),
-      child: Text(
-        'Add',
+      child: BlocBuilder<AddNoteCubit, AddNoteState>(
+        builder: (context, state) {
+          if(state is AddNoteLoading){
+            Center(child: CircularProgressIndicator(),);
+          }
+          return Text(
+            'Add',
+          );
+        },
       ),
     );
   }

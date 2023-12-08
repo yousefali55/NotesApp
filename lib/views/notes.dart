@@ -11,6 +11,7 @@ class NotesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        // resizeToAvoidBottomInset: false,
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(

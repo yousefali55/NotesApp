@@ -9,6 +9,7 @@ class AddNoteFloatingButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () {
         showModalBottomSheet(
+          isScrollControlled: true,
           context: context,
           builder: (_) => ModalBottomSheet());
       },
