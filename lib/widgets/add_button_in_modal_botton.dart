@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notes/cubits/add_note/add_note_cubit.dart';
 
 class AddButtonInModalBottom extends StatelessWidget {
-  AddButtonInModalBottom({super.key, required this.onPressed});
+  const AddButtonInModalBottom({super.key, required this.onPressed});
   final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,9 @@ class AddButtonInModalBottom extends StatelessWidget {
       child: BlocBuilder<AddNoteCubit, AddNoteState>(
         builder: (context, state) {
           if(state is AddNoteLoading){
-            Center(child: CircularProgressIndicator(),);
+            const Center(child: CircularProgressIndicator(),);
           }
-          return Text(
+          return const Text(
             'Add',
           );
         },

@@ -14,9 +14,13 @@ class NotesApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark(),
-        home: BlocProvider(
-          create: (context) => NotesCubit(),
-          child: NotesScreen(),
+        home: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => NotesCubit(),
+            ),
+          ],
+          child: const NotesScreen(),
         ),
       ),
     );

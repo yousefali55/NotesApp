@@ -11,10 +11,10 @@ class AddNoteFloatingButton extends StatelessWidget {
         showModalBottomSheet(
           isScrollControlled: true,
           context: context,
-          builder: (_) => ModalBottomSheet());
+          builder: (_) => const ModalBottomSheet());
       },
       backgroundColor: Colors.blueGrey,
-      child: Icon(
+      child: const Icon(
         Icons.add,
       ),
     );

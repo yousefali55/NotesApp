@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes/Models/note_model.dart';
 import 'package:notes/cubits/add_note/add_note_cubit.dart';
+import 'package:notes/cubits/note/notes_cubit.dart';
 import 'package:notes/widgets/add_button_in_modal_botton.dart';
 import 'package:notes/widgets/textfield.dart';
 
@@ -24,11 +24,12 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
       create: (context) => AddNoteCubit(),
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
-          if (state is AddNoteSuccess) {
-            Navigator.pop(context);
-          }
           if (state is AddNoteFailure) {
             print('state is ${state.erorrMessage}');
+          }
+          if (state is AddNoteSuccess) {
+            BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+            Navigator.pop(context);
           }
         },
         builder: (context, state) {
@@ -78,8 +79,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                             subtitle: subtitle!,
                             date: DateTime.now().toString(),
                             color: Colors.grey.value);
-                        BlocProvider.of<AddNoteCubit>(context)
-                            .addNote(noteModel);
+                        BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
                         setState(() {});
