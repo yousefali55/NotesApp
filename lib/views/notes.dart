@@ -28,15 +28,17 @@ class _NotesScreenState extends State<NotesScreen> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              CustomAppBar(
+              const CustomAppBar(
                 title: 'Notesss',
-                icon: Icons.search,
+                icon: Icon(
+                  Icons.search,
+                ),
               ),
               SizedBox(
                 height: 20.h,
               ),
-              ListViewNoteCards(),
-              AddNoteFloatingButton(),
+              const ListViewNoteCards(),
+              const AddNoteFloatingButton(),
             ],
           ),
         ),

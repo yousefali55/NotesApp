@@ -25,7 +25,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state is AddNoteFailure) {
-            print('state is ${state.erorrMessage}');
+            // print('state is ${state.erorrMessage}');
           }
           if (state is AddNoteSuccess) {
             BlocProvider.of<NotesCubit>(context).fetchAllNotes();
@@ -82,6 +82,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                         BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
+                        BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                         setState(() {});
                       }
                     },

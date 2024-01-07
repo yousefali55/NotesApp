@@ -10,17 +10,13 @@ class NotesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 812),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark(),
-        home: MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => NotesCubit(),
-            ),
-          ],
-          child: const NotesScreen(),
+      designSize: const Size(375, 812),
+      child: BlocProvider(
+        create: (context) => NotesCubit(),
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.dark(),
+          home: const NotesScreen(),
         ),
       ),
     );
