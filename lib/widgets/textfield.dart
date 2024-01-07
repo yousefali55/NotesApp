@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class CustonTextField extends StatelessWidget {
@@ -24,11 +25,11 @@ class CustonTextField extends StatelessWidget {
       maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: Colors.blueGrey,
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(
+          borderSide: const BorderSide(
             color: Colors.blueGrey,
             width: 1
           ),
