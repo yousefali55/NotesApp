@@ -29,7 +29,7 @@ class _NotesScreenState extends State<NotesScreen> {
           child: Column(
             children: [
               CustomAppBar(
-                title: 'Notes',
+                title: 'Notesss',
                 icon: Icons.search,
               ),
               SizedBox(
