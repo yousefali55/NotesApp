@@ -15,7 +15,7 @@ class ModalBottomSheet extends StatefulWidget {
 }
 
 class _ModalBottomSheetState extends State<ModalBottomSheet> {
-  final GlobalKey<FormState> FormKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subtitle;
   @override
@@ -42,7 +42,7 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
             ),
             height: 450.h,
             child: Form(
-              key: FormKey,
+              key: formKey,
               autovalidateMode: autovalidateMode,
               child: Column(
                 children: [
@@ -72,14 +72,15 @@ class _ModalBottomSheetState extends State<ModalBottomSheet> {
                   ),
                   AddButtonInModalBottom(
                     onPressed: () {
-                      if (FormKey.currentState!.validate()) {
-                        FormKey.currentState!.save();
+                      if (formKey.currentState!.validate()) {
+                        formKey.currentState!.save();
                         var noteModel = NotelModel(
                             title: title!,
                             subtitle: subtitle!,
                             date: DateTime.now().toString(),
                             color: Colors.grey.value);
-                        BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                        BlocProvider.of<AddNoteCubit>(context)
+                            .addNote(noteModel);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
                         BlocProvider.of<NotesCubit>(context).fetchAllNotes();

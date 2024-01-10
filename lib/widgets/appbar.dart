@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.title, required this.icon});
+  const CustomAppBar({super.key, required this.title, required this.icon, this.onPressed});
   final String title;
   final Widget icon;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,7 @@ class CustomAppBar extends StatelessWidget {
           ),
         ),
         IconButton(
-          onPressed: () {
-            
-          },
+          onPressed: onPressed,
           icon:icon,
           iconSize: 24,
         )

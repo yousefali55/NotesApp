@@ -2,15 +2,17 @@
 import 'package:flutter/material.dart';
 
 class CustonTextField extends StatelessWidget {
-  const CustonTextField({super.key, required this.maxLines, required this.hintText, this.onSaved, required this.type});
+  const CustonTextField({super.key, required this.maxLines, required this.hintText, this.onSaved, required this.type, this.onChanged});
   final int maxLines;
   final String hintText;
   final String type;
+  final void Function(String)? onChanged;
   final void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       validator: (value){
         if(value?.isEmpty ?? true){
           return '$type is required';
